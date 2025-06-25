@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Evaluation Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #a5b4fc 0%, #e879f9 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+        }
+        .model-container {
+            background: linear-gradient(145deg, #ffffff, #e0e7ff);
+            border-radius: 0.75rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            padding: 2rem;
+            max-width: 800px;
+            width: 90%;
+        }
+        .table-container {
+            margin: 0 auto;
+            width: 100%;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #f8fafc;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #d1d5db;
+        }
+        th {
+            background: linear-gradient(to right, #7c3aed, #db2777);
+            color: white;
+            font-weight: 600;
+        }
+        td {
+            color: #374151;
+        }
+        .btn-primary {
+            background: linear-gradient(to right, #7c3aed, #db2777);
+            transition: transform 0.2s ease;
+            font-size: 0.9rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            color: white;
+            font-weight: 600;
+            display: inline-block;
+            text-align: center;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="model-container">
+        <h1 class="text-2xl font-bold text-center text-gray-800 mb-5">Model Evaluation Results</h1>
+        <div class="table-container">
+            {% for table in tables %}
+                {{ table|safe }}
+            {% endfor %}
+        </div>
+        <div class="text-center mt-5">
+            <a href="/" class="btn-primary">Go Back</a>
+        </div>
+    </div>
+</body>
+</html>

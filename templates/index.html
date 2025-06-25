@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Regression Framework for Price Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #a5b4fc 0%, #e879f9 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+        }
+        .form-container {
+            background: linear-gradient(145deg, #ffffff, #e0e7ff);
+            border-radius: 0.75rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+        }
+        .input-field {
+            background-color: #ffffff;
+            border: 2px solid #6b7280;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .input-field:focus {
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+            background-color: #f8fafc;
+        }
+        .btn-primary {
+            background: linear-gradient(to right, #7c3aed, #db2777);
+            transition: transform 0.2s ease;
+            font-size: 0.9rem;
+            padding: 0.75rem;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: linear-gradient(to right, #4b5563, #6b7280);
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+        }
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1 class="text-2xl font-bold text-center text-gray-800 mb-5">Multi-Regression Framework for Price Prediction</h1>
+        <form action="/predict" method="POST" class="space-y-3">
+            <div>
+                <label for="Total Volume" class="block text-xs font-medium text-gray-700">Total Volume</label>
+                <input type="number" step="any" class="input-field mt-1 block w-full rounded-md focus:ring focus:ring-purple-200 focus:border-purple-500" id="Total Volume" name="Total Volume" required>
+            </div>
+            <div>
+                <label for="Total Bags" class="block text-xs font-medium text-gray-700">Total Bags</label>
+                <input type="number" step="any" class="input-field mt-1 block w-full rounded-md focus:ring focus:ring-purple-200 focus:border-purple-500" id="Total Bags" name="Total Bags" required>
+            </div>
+            <div>
+                <label for="Small Bags" class="block text-xs font-medium text-gray-700">Small Bags</label>
+                <input type="number" step="any" class="input-field mt-1 block w-full rounded-md focus:ring focus:ring-purple-200 focus:border-purple-500" id="Small Bags" name="Small Bags" required>
+            </div>
+            <div>
+                <label for="Large Bags" class="block text-xs font-medium text-gray-700">Large Bags</label>
+                <input type="number" step="any" class="input-field mt-1 block w-full rounded-md focus:ring focus:ring-purple-200 focus:border-purple-500" id="Large Bags" name="Large Bags" required>
+            </div>
+            <div>
+                <label for="XLarge Bags" class="block text-xs font-medium text-gray-700">XLarge Bags</label>
+                <input type="number" step="any" class="input-field mt-1 block w-full rounded-md focus:ring focus:ring-purple-200 focus:border-purple-500" id="XLarge Bags" name="XLarge Bags" required>
+            </div>
+            <div>
+                <label for="year" class="block text-xs font-medium text-gray-700">Year</label>
+                <input type="number" step="1" class="input-field mt-1 block w-full rounded-md focus:ring focus:ring-purple-200 focus:border-purple-500" id="year" name="year" required>
+            </div>
+            <div>
+                <label for="type" class="block text-xs font-medium text-gray-700">Type</label>
+                <select class="input-field mt-1 block w-full rounded-md focus:ring focus:ring-purple-200 focus:border-purple-500" id="type" name="type">
+                    {% for type_name in type_options %}
+                        <option value="{{ type_name }}">{{ type_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="region" class="block text-xs font-medium text-gray-700">Region</label>
+                <select class="input-field mt-1 block w-full rounded-md focus:ring focus:ring-purple-200 focus:border-purple-500" id="region" name="region">
+                    {% for region_name in region_options %}
+                        <option value="{{ region_name }}">{{ region_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="model" class="block text-xs font-medium text-gray-700">Select Model</label>
+                <select class="input-field mt-1 block w-full rounded-md focus:ring focus:ring-purple-200 focus:border-purple-500" id="model" name="model">
+                    {% for model_name in model_names %}
+                        <option value="{{ model_name }}">{{ model_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn-primary w-full rounded-md text-white font-semibold">Predict</button>
+        </form>
+        <div class="text-center mt-5">
+            <a href="/results" class="btn-secondary inline-block rounded-md text-white font-semibold">View Model Evaluation Results</a>
+        </div>
+    </div>
+</body>
+</html>
+</html>
