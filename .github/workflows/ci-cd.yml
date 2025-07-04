@@ -1,1 +1,36 @@
+name: CI/CD - Train ML Model and Save Artifacts
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  train-model:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🛒 Checkout code
+      uses: actions/checkout@v3
+
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: 📦 Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: 🧠 Train the model
+      run: |
+        python src/Multi_Regressions_model.py
+
+    - name: 🗃️ Upload trained model
+      uses: actions/upload-artifact@v3
+      with:
+        name: trained-model
+        path: models/
 
