@@ -10,11 +10,17 @@ model_names = [
     'PolynomialRegression', 'SGDRegressor', 'ANN', 'RandomForest', 'SVM', 'LGBM', 
     'XGBoost', 'KNN'
 ]
-models = {name: joblib.load(f'{name}.pkl') for name in model_names}
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+models = {
+    name: joblib.load(os.path.join(BASE_DIR, 'models', f'{name}.pkl'))
+    for name in model_names
+}
 
 # Load feature names and evaluation results
-feature_names = joblib.load('feature_names.pkl')
-results_df = pd.read_csv('Multi-Regression Framework for Price Prediction.csv')
+feature_names = joblib.load(os.path.join(BASE_DIR, 'models', 'feature_names.pkl'))
+results_df = pd.read_csv(os.path.join(BASE_DIR, 'models', 'results.csv'))
 
 # Define categorical mappings (must match the label encoder output used in training)
 type_options = {'conventional': 0, 'organic': 1}

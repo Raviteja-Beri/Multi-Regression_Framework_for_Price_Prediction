@@ -26,7 +26,11 @@ os.makedirs("models", exist_ok=True)
 # -----------------------------
 # Load and preprocess data
 # -----------------------------
+<<<<<<< HEAD
 df = pd.read_csv('data/avocado.csv')
+=======
+df = pd.read_csv(r'C:\Users\HP\VS Code Projects\Capstone-Projects\Multi-Regression Framework for Price Prediction\data\avocado.csv')
+>>>>>>> d6be537 (Prepare for rebase: commit local changes)
 df.drop(['Unnamed: 0', '4046', '4225', '4770', 'Date'], axis=1, inplace=True)
 
 # Encode categorical columns
@@ -93,6 +97,11 @@ for name, model in models.items():
 # -----------------------------
 results_df = pd.DataFrame(results)
 results_df.to_csv('models/results.csv', index=False)
+<<<<<<< HEAD
 
 print("All models trained and saved. Evaluation metrics stored in models/results.csv.")
 
+=======
+
+print("All models trained and saved. Evaluation metrics stored in models/results.csv.")
+>>>>>>> d6be537 (Prepare for rebase: commit local changes)
