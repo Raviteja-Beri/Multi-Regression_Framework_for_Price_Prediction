@@ -26,7 +26,7 @@ jobs:
 
     - name: 🧠 Train the model
       run: |
-        python src/Multi_Regressions_model.py
+        python Multi_Regressions_model.py
 
     - name: 🗃️ Upload trained model
       uses: actions/upload-artifact@v4
