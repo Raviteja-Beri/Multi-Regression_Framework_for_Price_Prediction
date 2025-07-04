@@ -15,7 +15,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import joblib
 
 # Load dataset
-dataset = pd.read_csv(r'C:\Users\HP\Downloads\Avocado Dataset\avocado.csv')
+dataset = pd.read_csv('data/avocado.csv')
 dataset.drop(['Unnamed: 0','4046','4225','4770','Date'], axis=1, inplace=True)
 
 # Label encoding
