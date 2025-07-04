@@ -29,7 +29,7 @@ jobs:
         python src/Multi_Regressions_model.py
 
     - name: 🗃️ Upload trained model
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: trained-model
         path: models/
