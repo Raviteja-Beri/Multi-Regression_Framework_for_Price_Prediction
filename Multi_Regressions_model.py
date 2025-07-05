@@ -27,8 +27,12 @@ os.makedirs("models", exist_ok=True)
 # Load and preprocess data
 # -----------------------------
 df = pd.read_csv('data/avocado.csv')
+<<<<<<< HEAD
 cols_to_drop = ['Unnamed: 0', '4046', '4225', '4770', 'Date']
 df.drop(columns=[col for col in cols_to_drop if col in df.columns], inplace=True)
+=======
+df.drop(['Unnamed: 0', '4046', '4225', '4770', 'Date'], axis=1, inplace=True)
+>>>>>>> f7d3748 (Track avocado.csv with Git LFS)
 
 # Encode categorical columns
 le_type = LabelEncoder()
@@ -96,3 +100,4 @@ results_df = pd.DataFrame(results)
 results_df.to_csv('models/results.csv', index=False)
 
 print("All models trained and saved. Evaluation metrics stored in models/results.csv.")
+
