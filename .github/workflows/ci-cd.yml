@@ -24,9 +24,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Debug CSV Columns
+    - name: 🔍 Debug CSV Columns
       run: |
-        python -c "import pandas as pd; df = pd.read_csv('avocado.csv'); print('CSV Columns:', df.columns.tolist())"
+        python -c "import pandas as pd; df = pd.read_csv('data/avocado.csv'); print('CSV Columns:', df.columns.tolist())"
 
     - name: Train the model
       run: |
