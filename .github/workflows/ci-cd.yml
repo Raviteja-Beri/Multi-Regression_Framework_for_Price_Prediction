@@ -11,10 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: 🛒 Checkout code (with Git LFS)
+    - name: 🛒 Checkout code with Git LFS
       uses: actions/checkout@v3
       with:
         lfs: true
@@ -24,7 +21,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: 🔍 Debug CSV Columns
+    - name: Debug CSV Columns
       run: |
         python -c "import pandas as pd; df = pd.read_csv('data/avocado.csv'); print('CSV Columns:', df.columns.tolist())"
 
@@ -37,5 +34,6 @@ jobs:
       with:
         name: trained-model
         path: models/
+
 
 
