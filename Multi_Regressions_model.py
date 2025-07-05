@@ -28,12 +28,10 @@ os.makedirs("models", exist_ok=True)
 # -----------------------------
 df = pd.read_csv('data/avocado.csv')
 
+# Drop unnecessary columns if they exist
 cols_to_drop = ['Unnamed: 0', '4046', '4225', '4770', 'Date']
-
 df.drop(columns=[col for col in cols_to_drop if col in df.columns], inplace=True)
-
-df.drop(['Unnamed: 0', '4046', '4225', '4770', 'Date'], axis=1, inplace=True)
-
+print("Final columns after drop:", df.columns.tolist())
 
 # Encode categorical columns
 le_type = LabelEncoder()
@@ -41,7 +39,7 @@ le_region = LabelEncoder()
 df['type'] = le_type.fit_transform(df['type'])
 df['region'] = le_region.fit_transform(df['region'])
 
-# Save label encoders
+# Save encoders
 joblib.dump(le_type, 'models/label_encoder_type.pkl')
 joblib.dump(le_region, 'models/label_encoder_region.pkl')
 
